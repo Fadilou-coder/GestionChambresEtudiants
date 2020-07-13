@@ -1,0 +1,40 @@
+{% extends 'acceuille.html.twig' %}
+
+
+{% block title %}Liste Des Chambres{% endblock %}
+
+{% block body %}
+    <div class="container bg-white">
+        <div class="justify-content-center d-flex">
+            <h1>Liste Des Chambres</h1>
+        </div>
+        <div class="justify-content-center d-flex text-center">
+            <table class="table table-striped table-bordered" id="tableChambre">
+                <thead>
+                    <tr>
+                        <th>Num Batiment</th>
+                        <th>Num Chambre</th>
+                        <th>Type</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for chambre in chambres %}
+                        <tr>
+                            <td>{{chambre.getNumBatiment.getNumBatiment}}</td>
+                            <td>{{chambre.getNumChambre}}</td>
+                            <td>{{chambre.type}}</td>
+                            <td>
+                                <a href=" {{path ('chambre_update', {'id': chambre.id}) }} "><span class="glyphicon glyphicon-edit"></span></a>
+                                <button class="btn btn-danger chambre_delete"  id="{{ chambre.id }}">
+                                    <i class="glyphicon glyphicon-trash"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div
+{% endblock %}
+
